@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KromaFlip • Revista Digital Portal</title>
+    <!-- Fuentes de alta definición: Inter, Syne, Unbounded y Playfair Display para la frase de contraportada -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Syne:wght@700;800&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+
+    <!-- Barra superior de la plataforma KromaFlip -->
+    <header class="kroma-topbar">
+        <div class="brand-left">
+            <div class="kroma-logo">Kroma<span>Flip</span></div>
+            <hgroup class="topbar-hgroup">
+                <h1 id="nav-magazine-title">Portal • El futuro en tus manos</h1>
+                <p id="nav-magazine-meta">Por Manuel Fereira</p>
+            </hgroup>
+        </div>
+
+        <div class="topbar-actions">
+            <select id="selector-ediciones" title="Cambiar publicación"></select>
+            <button type="button" class="btn-top btn-outline" id="btn-theme-toggle" title="Cambiar entre modo oscuro y claro">
+                ☀️ Modo claro
+            </button>
+            <button type="button" class="btn-top btn-outline" onclick="irAPagina(3)">Ir al índice</button>
+            <button type="button" class="btn-top btn-upload" id="btn-open-upload">+ Subir archivo PDF o Word</button>
+        </div>
+    </header>
+
+    <!-- Escenario central 3D del libro -->
+    <main class="book-stage" id="book-stage">
+
+        <button type="button" class="stage-arrow arrow-left" id="btn-prev" title="Página anterior">
+            &#10094;
+        </button>
+
+        <div class="book-wrapper" id="book-wrapper">
+            <div class="book" id="book">
+                <!-- Las hojas (<section class="sheet">) se inyectan dinámicamente -->
+            </div>
+        </div>
+
+        <button type="button" class="stage-arrow arrow-right" id="btn-next" title="Página siguiente">
+            &#10095;
+        </button>
+
+    </main>
+
+    <!-- Barra inferior de controles -->
+    <footer class="kroma-bottombar">
+        <div class="spread-indicator" id="spread-indicator">Portada (página 01 de 10)</div>
+
+        <div class="slider-container">
+            <span>Inicio</span>
+            <input type="range" id="page-slider" min="0" max="5" value="0" step="1">
+            <span>Final</span>
+        </div>
+
+        <div class="zoom-controls">
+            <button type="button" class="icon-btn" id="btn-zoom-out" title="Alejar">&#8722;</button>
+            <span id="zoom-label">100%</span>
+            <button type="button" class="icon-btn" id="btn-zoom-in" title="Acercar">&#43;</button>
+            <button type="button" class="icon-btn" id="btn-fullscreen" title="Pantalla completa">&#x26F6;</button>
+        </div>
+    </footer>
+
+    <!-- Modal para subir un PDF o Word -->
+    <aside class="modal-backdrop hidden" id="modal-upload">
+        <section class="modal-dialog">
+            <hgroup class="modal-hgroup">
+                <h2>Publicar documento en KromaFlip</h2>
+                <p>Sube cualquier archivo PDF (como tu revista) o Word (.docx) para hojearlo como un libro real.</p>
+            </hgroup>
+
+            <form id="form-upload" enctype="multipart/form-data">
+                <div class="field">
+                    <label for="titulo">Título de la publicación:</label>
+                    <input type="text" id="titulo" name="titulo" placeholder="Ejemplo: Revista Portal">
+                </div>
+                <div class="field">
+                    <label for="autor">Autor:</label>
+                    <input type="text" id="autor" name="autor" value="Manuel Fereira" required>
+                </div>
+                <div class="field">
+                    <label for="archivo">Archivo (.pdf o .docx):</label>
+                    <input type="file" id="archivo" name="archivo" accept=".pdf,.docx" required>
+                </div>
+
+                <p id="upload-msg" class="upload-msg"></p>
+
+                <div class="modal-btns">
+                    <button type="button" class="btn-cancel" id="btn-close-upload">Cancelar</button>
+                    <button type="submit" class="btn-submit">Desplegar libro</button>
+                </div>
+            </form>
+        </section>
+    </aside>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

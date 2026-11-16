@@ -1,0 +1,1330 @@
+/* ==========================================================================
+   1. VARIABLES DE COLOR Y DIMENSIONES EN ALTA DEFINICIÓN (MODO OSCURO BASE)
+   ========================================================================== */
+:root {
+    --stage-bg: #090a0c;
+    --stage-radial-center: #1f2229;
+    --bar-bg: #111317;
+    --bar-border: rgba(255, 255, 255, 0.08);
+    --page-bg: #121316;
+    --page-surface: #1b1d22;
+    --page-border: #2a2d35;
+    --text-white: #f8fafc;
+    --text-body: #e4e4e7;
+    --text-grey: #a1a1aa;
+    --text-tagline: #d4d4d8;
+    --accent-green: #86efac;
+    --accent-green-strong: #4ade80;
+    --ink-on-green: #090d0a;
+    --heading-grad-start: #ffffff;
+    --cover-box-bg: rgba(18, 19, 22, 0.94);
+    --vector-card-bg: linear-gradient(135deg, rgba(27, 29, 34, 0.9) 0%, rgba(18, 19, 22, 0.95) 100%);
+    --vector-banner-bg: linear-gradient(180deg, rgba(27, 29, 34, 0.75) 0%, rgba(18, 19, 22, 0.95) 100%);
+    --backcover-bg: linear-gradient(135deg, #16181d 0%, #0d0e11 100%);
+    --backcover-box-bg: linear-gradient(135deg, rgba(27, 29, 34, 0.98) 0%, rgba(18, 19, 22, 0.98) 100%);
+    --arrow-bg: rgba(17, 19, 23, 0.9);
+    --modal-bg: #16181d;
+    --input-bg: #0d0e11;
+    --spine-shadow-front: inset 32px 0 40px -20px rgba(0, 0, 0, 0.85), 12px 14px 32px rgba(0, 0, 0, 0.65);
+    --spine-shadow-back: inset -32px 0 40px -20px rgba(0, 0, 0, 0.85), -12px 14px 32px rgba(0, 0, 0, 0.65);
+    --page-width: 515px;
+    --page-height: 710px;
+}
+
+/* ==========================================================================
+   VARIABLES Y AJUSTES PARA EL MODO CLARO (PLATAFORMA + REVISTA)
+   ========================================================================== */
+body.light-mode {
+    --stage-bg: #dce2ea;
+    --stage-radial-center: #f4f7fb;
+    --bar-bg: #ffffff;
+    --bar-border: rgba(15, 23, 42, 0.1);
+    --page-bg: #fdfdfd;
+    --page-surface: #f1f5f9;
+    --page-border: #cbd5e1;
+    --text-white: #0f172a;
+    --text-body: #334155;
+    --text-grey: #64748b;
+    --text-tagline: #475569;
+    --accent-green: #16a34a;
+    --accent-green-strong: #15803d;
+    --ink-on-green: #ffffff;
+    --heading-grad-start: #0f172a;
+    --cover-box-bg: rgba(255, 255, 255, 0.94);
+    --vector-card-bg: linear-gradient(135deg, #f8fafc 0%, #eef2f6 100%);
+    --vector-banner-bg: linear-gradient(180deg, #f8fafc 0%, #eef2f6 100%);
+    --backcover-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    --backcover-box-bg: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+    --arrow-bg: rgba(255, 255, 255, 0.92);
+    --modal-bg: #ffffff;
+    --input-bg: #f8fafc;
+    --spine-shadow-front: inset 28px 0 34px -20px rgba(15, 23, 42, 0.18), 10px 14px 28px rgba(15, 23, 42, 0.16);
+    --spine-shadow-back: inset -28px 0 34px -20px rgba(15, 23, 42, 0.18), -10px 14px 28px rgba(15, 23, 42, 0.16);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: radial-gradient(circle at center, var(--stage-radial-center) 0%, var(--stage-bg) 100%);
+    color: var(--text-white);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: high-quality;
+}
+
+/* ==========================================================================
+   2. BARRA SUPERIOR KROMAFLIP
+   ========================================================================== */
+.kroma-topbar {
+    height: 58px;
+    background: var(--bar-bg);
+    border-bottom: 1px solid var(--bar-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.6rem;
+    z-index: 100;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.brand-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.kroma-logo {
+    background: var(--page-surface);
+    border: 1px solid var(--accent-green);
+    color: var(--text-white);
+    font-weight: 800;
+    font-size: 0.95rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.kroma-logo span {
+    color: var(--accent-green);
+}
+
+.topbar-hgroup h1 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-white);
+}
+
+.topbar-hgroup p {
+    font-size: 0.75rem;
+    color: var(--text-grey);
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+#selector-ediciones {
+    background: var(--page-surface);
+    color: var(--text-white);
+    border: 1px solid var(--page-border);
+    padding: 0.45rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.btn-top {
+    padding: 0.48rem 1rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.82rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text-white);
+    border: 1px solid var(--page-border);
+}
+
+.btn-outline:hover {
+    border-color: var(--accent-green);
+    color: var(--accent-green);
+}
+
+.btn-upload {
+    background: var(--accent-green);
+    color: var(--ink-on-green);
+}
+
+.btn-upload:hover {
+    background: var(--accent-green-strong);
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   3. ESCENARIO 3D Y MOTOR DE PASO DE PÁGINAS (FLIPBOOK)
+   ========================================================================== */
+.book-stage {
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 0.5rem;
+}
+
+.book-wrapper {
+    transition: transform 0.25s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    will-change: transform;
+}
+
+.book {
+    position: relative;
+    width: var(--page-width);
+    height: var(--page-height);
+    perspective: 2800px;
+    transform-style: preserve-3d;
+    transition: transform 0.75s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.book.open-spread {
+    transform: translateX(50%);
+}
+
+.book.closed-back {
+    transform: translateX(100%);
+}
+
+section.sheet {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: left center;
+    transform-style: preserve-3d;
+    transition: transform 0.85s cubic-bezier(0.645, 0.045, 0.355, 1);
+    cursor: pointer;
+}
+
+section.sheet.flipped {
+    transform: rotateY(-180deg);
+}
+
+.page {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--page-bg);
+    color: var(--text-white);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.15rem 1.75rem 1.1rem;
+    border: 1px solid var(--page-border);
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.page-front {
+    z-index: 2;
+    transform: rotateY(0deg) translateZ(0.1px);
+    border-radius: 0 6px 6px 0;
+    box-shadow: var(--spine-shadow-front);
+}
+
+.page-back {
+    z-index: 1;
+    transform: rotateY(180deg) translateZ(0.1px);
+    border-radius: 6px 0 0 6px;
+    box-shadow: var(--spine-shadow-back);
+}
+
+section.sheet:not(.flipped) .page-back {
+    pointer-events: none;
+}
+
+section.sheet.flipped .page-front {
+    pointer-events: none;
+}
+
+.page-front:hover,
+.page-back:hover {
+    border-color: var(--accent-green);
+}
+
+/* ==========================================================================
+   4. ENCABEZADOS (<hgroup>), PORTADA «PORTAL» Y MAQUETACIÓN EDITORIAL
+   ========================================================================== */
+.page-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.72rem;
+    letter-spacing: 0.6px;
+    color: var(--text-grey);
+    border-bottom: 1px solid var(--page-border);
+    padding-bottom: 0.35rem;
+    margin-bottom: 0.45rem;
+}
+
+.page-header-bar .cat-tag {
+    color: var(--accent-green);
+    font-weight: 700;
+}
+
+.page > hgroup.page-hgroup {
+    margin-bottom: 0.55rem;
+}
+
+hgroup.page-hgroup h2 {
+    font-family: 'Syne', 'Inter', sans-serif;
+    font-size: 1.36rem;
+    font-weight: 800;
+    line-height: 1.24;
+    padding-bottom: 0.14rem;
+    letter-spacing: -0.3px;
+    background: linear-gradient(90deg, var(--heading-grad-start), var(--accent-green));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.08rem;
+}
+
+hgroup.page-hgroup p {
+    font-size: 0.78rem;
+    color: var(--text-grey);
+}
+
+.page-body-slot {
+    flex: 1;
+    font-size: 0.81rem;
+    line-height: 1.54;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-footer-bar {
+    border-top: 1px solid var(--page-border);
+    padding-top: 0.38rem;
+    margin-top: 0.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.72rem;
+    color: var(--text-grey);
+}
+
+.big-folio-num {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.42rem;
+    font-weight: 900;
+    color: var(--text-white);
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+/* Portada (Página 01) */
+.page.is-cover-page > .page-header-bar,
+.page.is-cover-page > hgroup.page-hgroup {
+    display: none;
+}
+
+.ed-cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    gap: 0.65rem;
+}
+
+.ed-cover-masthead {
+    text-align: center;
+    border-bottom: 2px solid var(--accent-green);
+    padding-bottom: 0.5rem;
+    background: linear-gradient(180deg, rgba(134, 239, 172, 0.08) 0%, transparent 100%);
+    padding-top: 0.25rem;
+    border-radius: 4px 4px 0 0;
+}
+
+.ed-masthead-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    color: var(--accent-green);
+    margin-bottom: 0.15rem;
+    padding: 0 0.25rem;
+}
+
+.ed-magazine-brand {
+    font-family: 'Unbounded', 'Syne', sans-serif;
+    font-size: 3.15rem;
+    font-weight: 900;
+    letter-spacing: 6px;
+    line-height: 1.05;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, var(--heading-grad-start) 15%, var(--accent-green) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 14px rgba(134, 239, 172, 0.25));
+}
+
+body.light-mode .ed-magazine-brand {
+    filter: drop-shadow(0 3px 10px rgba(22, 163, 74, 0.15));
+}
+
+.ed-magazine-tagline {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 2.8px;
+    color: var(--text-tagline);
+    margin-top: 0.2rem;
+}
+
+.ed-cover-hero {
+    position: relative;
+    height: 225px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--page-border);
+}
+
+.ed-cover-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: contrast(1.08) brightness(0.92);
+}
+
+.ed-cover-title-box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: var(--cover-box-bg);
+    padding: 0.6rem 1rem;
+    border-top: 2px solid var(--accent-green);
+}
+
+.ed-cover-title-box h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--text-white);
+}
+
+.ed-cover-mid {
+    display: grid;
+    grid-template-columns: 1fr 135px;
+    gap: 0.75rem;
+    align-items: stretch;
+}
+
+.ed-cover-lead {
+    background: var(--page-surface);
+    padding: 0.7rem 0.9rem;
+    border-left: 3px solid var(--text-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ed-cover-lead h4 {
+    font-size: 0.88rem;
+    margin-bottom: 0.22rem;
+    color: var(--text-white);
+}
+
+.ed-cover-lead p {
+    font-size: 0.74rem;
+    color: var(--text-grey);
+}
+
+.ed-author-green-box {
+    background: var(--accent-green);
+    color: var(--ink-on-green);
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 0.78rem;
+}
+
+.ed-author-green-box strong {
+    font-size: 0.96rem;
+    font-weight: 900;
+    line-height: 1.15;
+    margin-top: 0.15rem;
+}
+
+.ed-cover-bottom-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.65rem;
+    border-top: 1px solid var(--page-border);
+    padding-top: 0.6rem;
+}
+
+.ed-cover-col {
+    border-right: 1px solid var(--page-border);
+    padding-right: 0.5rem;
+}
+
+.ed-cover-col:last-child {
+    border-right: none;
+    padding-right: 0;
+}
+
+.ed-cover-col h5 {
+    font-size: 0.78rem;
+    color: var(--accent-green);
+    margin-bottom: 0.22rem;
+}
+
+.ed-cover-col p {
+    font-size: 0.71rem;
+    color: var(--text-grey);
+    line-height: 1.42;
+}
+
+/* ==========================================================================
+   MAQUETACIÓN INTERIOR Y VECTORES EN TAMAÑO GRANDE (SUBIDOS SIN CORTES)
+   ========================================================================== */
+.ed-split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.05rem;
+    height: 100%;
+}
+
+.ed-col-left,
+.ed-col-right,
+.ed-side-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.ed-green-label {
+    display: inline-block;
+    align-self: flex-start;
+    width: fit-content;
+    background: var(--accent-green);
+    color: var(--ink-on-green);
+    font-weight: 800;
+    font-size: 0.73rem;
+    padding: 0.2rem 0.6rem;
+    margin-bottom: 0.55rem;
+}
+
+.ed-paragraph {
+    color: var(--text-body);
+    font-size: 0.78rem;
+    line-height: 1.53;
+    margin-bottom: 0.55rem;
+    text-align: justify;
+}
+
+.ed-paragraph code {
+    color: var(--accent-green);
+    font-weight: 600;
+}
+
+.ed-signature {
+    margin-top: 0.6rem;
+    padding: 0.65rem 0.75rem;
+    background: var(--page-surface);
+    border-top: 2px solid var(--accent-green);
+    border-radius: 0 0 6px 6px;
+}
+
+.ed-sig-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ed-sig-row strong {
+    display: block;
+    font-size: 0.84rem;
+    color: var(--text-white);
+    margin-bottom: 0.1rem;
+}
+
+.ed-sig-row span {
+    display: block;
+    color: var(--accent-green);
+    font-size: 0.68rem;
+}
+
+.ed-sig-vector {
+    width: 54px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.ed-directory-list,
+.ed-credits-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.44rem;
+    font-size: 0.75rem;
+}
+
+.ed-directory-list li {
+    background: var(--page-surface);
+    padding: 0.44rem 0.65rem;
+    border-left: 2px solid var(--accent-green);
+    display: flex;
+    flex-direction: column;
+}
+
+.ed-directory-list li span {
+    font-size: 0.67rem;
+    color: var(--text-grey);
+}
+
+.ed-credits-list li {
+    background: var(--page-surface);
+    padding: 0.46rem 0.65rem;
+    border-left: 2px solid var(--accent-green);
+    display: block;
+    line-height: 1.45;
+    color: var(--text-body);
+}
+
+.ed-credits-list li strong {
+    color: var(--text-white);
+}
+
+.ed-credits-list li code {
+    color: var(--accent-green);
+    font-size: 0.72rem;
+}
+
+/* Índice */
+.ed-toc-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.ed-toc-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.ed-toc-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.48rem 0.35rem;
+    border-bottom: 1px solid var(--page-border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ed-toc-row:hover {
+    background: var(--page-surface);
+    padding-left: 0.7rem;
+    color: var(--accent-green);
+}
+
+.ed-toc-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.ed-toc-num {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--accent-green);
+}
+
+/* ==========================================================================
+   VECTORES DECORATIVOS GRANDES (POSICIONADOS MÁS ARRIBA)
+   ========================================================================== */
+.ed-vector-banner {
+    margin-top: 0.75rem;
+    background: var(--vector-banner-bg);
+    border: 1px solid var(--page-border);
+    border-radius: 6px;
+    padding: 0.55rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.ed-vector-banner svg {
+    width: 100%;
+    height: 46px;
+}
+
+.ed-vector-caption {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent-green);
+}
+
+/* Trío vectorial de la Página 04 en su diseño vertical grande original */
+.ed-vector-trio {
+    margin-top: 0.45rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.55rem;
+}
+
+.ed-vector-pill {
+    background: var(--page-surface);
+    border: 1px solid var(--page-border);
+    border-top: 2px solid var(--accent-green);
+    border-radius: 6px;
+    padding: 0.52rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    text-align: center;
+}
+
+.ed-vector-pill svg {
+    width: 26px;
+    height: 26px;
+}
+
+.ed-vector-pill span {
+    font-size: 0.69rem;
+    font-weight: 700;
+    color: var(--text-white);
+}
+
+/* Tarjetas vectoriales grandes en Páginas 05, 07 y 09 subidas ligeramente */
+.ed-vector-card {
+    margin-top: 0.55rem;
+    background: var(--vector-card-bg);
+    border: 1px solid var(--page-border);
+    border-radius: 6px;
+    padding: 0.58rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.32rem;
+}
+
+.ed-vector-card svg {
+    width: 100%;
+    height: 52px;
+}
+
+.ed-vector-card-large svg {
+    height: 66px;
+}
+
+.ed-vector-card span {
+    font-size: 0.61rem;
+    font-weight: 800;
+    letter-spacing: 1.05px;
+    color: var(--accent-green);
+    text-align: center;
+}
+
+/* Línea de tiempo de Página 06 en su tamaño grande y subida */
+.ed-vector-timeline {
+    margin-top: 0.45rem;
+    background: var(--page-surface);
+    border: 1px solid var(--page-border);
+    border-radius: 6px;
+    padding: 0.48rem 0.75rem 0.55rem;
+}
+
+.ed-vector-timeline svg {
+    width: 100%;
+    height: 28px;
+}
+
+.ed-timeline-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.64rem;
+    color: var(--text-grey);
+    margin-top: 0.12rem;
+}
+
+.ed-timeline-labels strong {
+    color: var(--accent-green);
+}
+
+/* Adaptación automática de colores SVG internos en Modo Claro */
+body.light-mode .page svg [stroke="#86efac"] {
+    stroke: var(--accent-green);
+}
+
+body.light-mode .page svg [fill="#86efac"] {
+    fill: var(--accent-green);
+}
+
+body.light-mode .page svg [stroke="#ffffff"] {
+    stroke: var(--text-white);
+}
+
+body.light-mode .page svg [fill="#ffffff"] {
+    fill: var(--text-white);
+}
+
+body.light-mode .page svg [stroke="#2a2d35"] {
+    stroke: var(--page-border);
+}
+
+body.light-mode .page svg [fill="#121316"] {
+    fill: var(--page-bg);
+}
+
+/* Foto panorámica superior (Páginas 04 y 06) */
+.ed-top-photo-layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.48rem;
+    height: 100%;
+}
+
+.ed-wide-img {
+    height: 158px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--page-border);
+    flex-shrink: 0;
+}
+
+.ed-wide-img-compact {
+    height: 122px;
+}
+
+.ed-wide-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ed-plus-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-green);
+    font-weight: 900;
+    line-height: 1;
+}
+
+.ed-plus-line .line {
+    flex: 1;
+    height: 1px;
+    background: var(--page-border);
+}
+
+.ed-two-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+}
+
+.ed-two-cols .ed-paragraph {
+    margin-bottom: 0;
+    font-size: 0.75rem;
+    line-height: 1.48;
+}
+
+.ed-highlight-quote {
+    background: var(--page-surface);
+    border-left: 3px solid var(--accent-green);
+    padding: 0.52rem 0.75rem;
+    font-size: 0.74rem;
+    font-weight: 700;
+    line-height: 1.44;
+    color: var(--text-white);
+}
+
+/* Diseño dividido vertical (Página 05) */
+.ed-vertical-split {
+    display: grid;
+    grid-template-columns: 165px 1fr;
+    gap: 0.95rem;
+    height: 100%;
+}
+
+.ed-tall-img {
+    height: 100%;
+    max-height: 495px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--page-border);
+}
+
+.ed-tall-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ed-specs-mini {
+    background: var(--page-surface);
+    border: 1px solid var(--page-border);
+    padding: 0.55rem 0.7rem;
+    font-size: 0.74rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-top: 0.4rem;
+}
+
+.ed-specs-mini strong {
+    color: var(--accent-green);
+}
+
+/* Tarjetas de expertos (Página 08) */
+.ed-experts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.7rem;
+    height: 100%;
+}
+
+.ed-expert-card {
+    background: var(--page-surface);
+    border: 1px solid var(--page-border);
+    padding: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.48rem;
+    height: 100%;
+}
+
+.ed-expert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.76rem;
+    border-bottom: 1px solid var(--page-border);
+    padding-bottom: 0.28rem;
+}
+
+.ed-expert-header span {
+    color: var(--accent-green);
+    font-weight: 900;
+}
+
+.ed-expert-card img {
+    width: 100%;
+    height: 138px;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.12);
+}
+
+.ed-expert-card p {
+    font-size: 0.73rem;
+    color: var(--text-body);
+    line-height: 1.45;
+}
+
+.ed-expert-vector {
+    margin-top: auto;
+    border-top: 1px solid var(--page-border);
+    padding-top: 0.45rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.22rem;
+}
+
+.ed-expert-vector svg {
+    width: 100%;
+    height: 22px;
+}
+
+.ed-expert-vector span {
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--accent-green);
+}
+
+/* Contraportada (Página 10) */
+.ed-backcover {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--backcover-bg);
+    padding: 1.45rem;
+    border: 1px solid var(--page-border);
+}
+
+.ed-backcover-lines {
+    height: 75px;
+    background: repeating-linear-gradient(
+        -45deg,
+        rgba(134, 239, 172, 0.18),
+        rgba(134, 239, 172, 0.18) 2px,
+        transparent 2px,
+        transparent 10px
+    );
+    border-left: 4px solid var(--accent-green);
+}
+
+body.light-mode .ed-backcover-lines {
+    background: repeating-linear-gradient(
+        -45deg,
+        rgba(22, 163, 74, 0.16),
+        rgba(22, 163, 74, 0.16) 2px,
+        transparent 2px,
+        transparent 10px
+    );
+}
+
+.ed-backcover-box {
+    position: relative;
+    background: var(--backcover-box-bg);
+    padding: 1.55rem 1.45rem;
+    border-left: 4px solid var(--accent-green);
+    border-right: 1px solid var(--page-border);
+    border-top: 1px solid var(--page-border);
+    border-bottom: 1px solid var(--page-border);
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+body.light-mode .ed-backcover-box {
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.ed-backcover-text {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 1.14rem;
+    font-weight: 600;
+    line-height: 1.62;
+    letter-spacing: 0.2px;
+    color: var(--text-white);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+body.light-mode .ed-backcover-text {
+    text-shadow: none;
+}
+
+.ed-backcover-text::before {
+    content: "“";
+    font-family: 'Playfair Display', serif;
+    font-size: 1.65rem;
+    color: var(--accent-green);
+    margin-right: 0.2rem;
+    line-height: 0;
+}
+
+.ed-backcover-text::after {
+    content: "”";
+    font-family: 'Playfair Display', serif;
+    font-size: 1.65rem;
+    color: var(--accent-green);
+    margin-left: 0.15rem;
+    line-height: 0;
+}
+
+.ed-backcover-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid var(--page-border);
+    padding-top: 0.8rem;
+}
+
+.backcover-portal-logo {
+    display: block;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.35rem;
+    letter-spacing: 2px;
+    color: var(--accent-green);
+}
+
+.ed-backcover-footer span {
+    font-size: 0.75rem;
+    color: var(--text-grey);
+}
+
+.ed-backcover-author {
+    font-size: 0.75rem;
+    color: var(--text-white);
+}
+
+/* Lienzo para PDFs en alta resolución */
+.pdf-page-canvas-container {
+    padding: 0 !important;
+    background: var(--page-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pdf-canvas {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Flechas laterales */
+.stage-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid var(--page-border);
+    background: var(--arrow-bg);
+    color: var(--text-white);
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 90;
+    transition: all 0.2s;
+}
+
+.stage-arrow:hover:not(:disabled) {
+    background: var(--accent-green);
+    color: var(--ink-on-green);
+    border-color: var(--accent-green);
+}
+
+.stage-arrow:disabled {
+    opacity: 0.25;
+    cursor: default;
+}
+
+.arrow-left { left: 1.5rem; }
+.arrow-right { right: 1.5rem; }
+
+/* ==========================================================================
+   5. BARRA INFERIOR Y MODAL
+   ========================================================================== */
+.kroma-bottombar {
+    height: 52px;
+    background: var(--bar-bg);
+    border-top: 1px solid var(--bar-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.6rem;
+    font-size: 0.8rem;
+    z-index: 100;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.spread-indicator {
+    font-weight: 700;
+    color: var(--text-white);
+    min-width: 170px;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+    max-width: 440px;
+    color: var(--text-grey);
+    font-size: 0.75rem;
+}
+
+#page-slider {
+    flex: 1;
+    accent-color: var(--accent-green);
+    cursor: pointer;
+}
+
+.zoom-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.icon-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid var(--page-border);
+    background: var(--page-surface);
+    color: var(--text-white);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+    background: var(--accent-green);
+    color: var(--ink-on-green);
+}
+
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 300;
+}
+
+.modal-backdrop.hidden {
+    display: none;
+}
+
+.modal-dialog {
+    background: var(--modal-bg);
+    border: 1px solid var(--page-border);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 440px;
+    padding: 1.75rem;
+}
+
+.modal-hgroup h2 {
+    font-size: 1.15rem;
+    margin-bottom: 0.3rem;
+}
+
+.modal-hgroup p {
+    font-size: 0.78rem;
+    color: var(--text-grey);
+    margin-bottom: 1.1rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 0.9rem;
+    font-size: 0.8rem;
+}
+
+.field input {
+    background: var(--input-bg);
+    border: 1px solid var(--page-border);
+    color: var(--text-white);
+    padding: 0.55rem 0.75rem;
+    border-radius: 6px;
+}
+
+.upload-msg {
+    font-size: 0.78rem;
+    color: var(--accent-green);
+    margin-bottom: 0.6rem;
+}
+
+.modal-btns {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.65rem;
+}
+
+.btn-cancel {
+    background: transparent;
+    border: 1px solid var(--page-border);
+    color: var(--text-grey);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-submit {
+    background: var(--accent-green);
+    border: none;
+    color: var(--ink-on-green);
+    font-weight: 700;
+    padding: 0.5rem 1.1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   HOJA DE CRÉDITOS EDITORIAL (PÁGINA 09)
+   ========================================================================== */
+.ed-legal-sheet {
+    flex: 1;
+    background: var(--page-surface);
+    border: 1px solid var(--page-border);
+    border-left: 3px solid var(--accent-green);
+    border-radius: 4px;
+    padding: 0.85rem 0.9rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 0.69rem;
+    line-height: 1.42;
+    color: var(--text-body);
+}
+
+.ed-legal-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.ed-legal-title {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--text-white);
+}
+
+.ed-legal-author {
+    font-weight: 700;
+    color: var(--accent-green);
+    margin-top: 0.08rem;
+}
+
+.ed-legal-heading {
+    font-weight: 700;
+    color: var(--text-white);
+    margin-bottom: 0.05rem;
+}

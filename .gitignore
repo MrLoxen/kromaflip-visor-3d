@@ -1,0 +1,11 @@
+# Cachés de Python
+__pycache__/
+*.pyc
+
+# Base de datos local
+revista.db
+*.db
+*.sqlite3
+
+# Carpeta de archivos dinámicos
+uploads/
